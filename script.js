@@ -37,7 +37,7 @@ async function getStationsInDepartment(departmentName) {
   if (response.ok) {
     const data = await response.json();
     if (data && data.stop_areas && data.stop_areas.length > 0) {
-      return data.stop_areas;
+        document.getElementById('result_dep').innerHTML = data.stop_areas;
     }
   }
   return null;
@@ -58,11 +58,12 @@ async function getStationsInRegion(regionName) {
   if (response.ok) {
     const data = await response.json();
     if (data && data.stop_areas && data.stop_areas.length > 0) {
-      document.getElementById('result').innerHTML = data.stop_areas;
+      document.getElementById('result_reg').innerHTML = data.stop_areas;
     }
   }
   return null;
 }
+
 
 
 //Fonction qui donne directement les stations de train grâce à un nom de commune
@@ -80,7 +81,7 @@ async function getStationsInCommune(cityName) {
   if (response.ok) {
     const data = await response.json();
     if (data && data.stop_areas && data.stop_areas.length > 0) {
-      return data.stop_areas;
+        document.getElementById('result_com').innerHTML = data.stop_areas;
     }
   }
   return null;

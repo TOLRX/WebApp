@@ -2,58 +2,176 @@
 <html>
     <head>
         <title>
-            DictMath, Votre outil en ligne de dictée d'équations
+            POI Web Application
         </title>
         <meta charset="utf-8"> 
-        <meta name="description" content="Avec DictMath, écrivez vos propres équations en utilisant votre voix">
+        <meta name="description" content="Search for nearest Points of Interest !">
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">          
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">    
+        <script type = "text/javascript"  src = "jscript.js"> </script>
+        <link rel="stylesheet" href="stylesheet.css">
 
-        <link href="stylesheet.css" rel="stylesheet">
     </head>
     <body> 
 
 
         <h1>
-            DictMath
+            POI Web App
         </h1>
         <div>
-            <p>Votre outil en ligne de dictée d'équations !</p>
+            <p>Your tool to find everything around !</p>
         </div>
         <hr>
-        <div>
-            <script type='text/javascript' src="jscript.js"></script>
-        </div>
-        <div>
-            <input type="button" value="Nouvelle équation" onclick='add()' accesskey ="1"/>
-            <hr>
-            <label for="feuille1">Feuille d'équation 1</label>
-            <br>
-            <form action="index.html" target="_blank">
-                <textarea name="Feuille 1" id="feuille1" classe="equation" cols="100" rows="15" required autofocus ></textarea>   
-                                                                
-                <button type=button onclick='doDownload(document.getElementById("feuille1").value)' accesskey="2">Télécharger le document</button>
-                <input type="reset" onclick="return reset_confirmation();" value = "Réinitialisation du document" style="font-weight:bold" accesskey ="3">
 
-            </form>                    
-                                    
-            <div id="fooBar"></div>
-        </div>
-        <h3>
-            Conseils d'utilisation :
-        </h3>
-        <div>
-            <p>Il est possible de se déplacer sur le site à l'aide aide de commandes vocales (à développer) ou de la touches <strong>tab</strong> et des <strong>flèches directionnelles</strong> </p>
-        </div>
-        <div>
-            <p>Nous vous recommandons d'utiliser le narrateur de votre ordinateur pour obtenir un feedback instantané sur les boutons sur lesquels 
-            vous vous trouvez et pour pouvoir entendre ce que vous écrivez. Appuyez sur <strong>alt</strong> et <strong>1</strong>
-            pour ajouter une nouvelle feuille d'équation, <strong>2</strong> pour enregistrer votre travail et <strong>3</strong> 
-            pour supprimer le contenu de la feuille actuelle.
-            Attention, ces commandes ne marchent que sur la première feuille d'équation.
-        </div>
+        <h3>Find by municipality name</h3>
+
+        <label for="municipality">Enter a municipality:</label>
+        <input type="text" id="municipality" name="mun"><br>
+        <p>Launch research</p>
+        <input type="button" value="Submit" onclick='return getStationsInCommune(document.getElementById("municipality").value)'>
+        <div id="result_com"></div>
+        <br>
+        <hr>
+        <br>
+        <h3>Find by department name</h3>
+
+
+        <label for="department">Enter the department:</label>
+        <input type="search" id="department" list = "departments_list" name="q">
+        <button  type="button" value="Submit" onclick='return getStationsInDepartment(document.getElementById("department").value)'>Search</button>
+
+        <datalist id="departments_list">
+            <option value="Ain">
+            <option value="Aisne">
+            <option value="Allier">
+            <option value="Alpes de Haute-Provence">
+            <option value="Hautes-Alpes">
+            <option value="Alpes-Maritimes">
+            <option value="Ardêche">
+            <option value="Ardennes">
+            <option value="Ariège">
+            <option value="Aube">
+            <option value="Aude">
+            <option value="Aveyron">
+            <option value="Bouches-du-Rhône">
+            <option value="Calvados">
+            <option value="Cantal">
+            <option value="Charente">
+            <option value="Charente-Maritime">
+            <option value="Cher">
+            <option value="Corrèze">
+            <option value="Corse-du-Sud">
+            <option value="Haute-Corse">
+            <option value="Côte-d'Or">
+            <option value="Côtes d'Armor">
+            <option value="	Creuse">
+            <option value="Dordogne">
+            <option value="Doubs">
+            <option value="Drôme">
+            <option value="Eure">
+            <option value="Eure-et-Loir">                                                               
+            <option value="	Finistère">
+            <option value="Gard">
+            <option value="Haute-Garonne">
+            <option value="Gers">
+            <option value="Gironde">
+            <option value="Hérault">
+            <option value="Île-et-Vilaine">
+            <option value="Indre">
+            <option value="Indre-et-Loire">
+            <option value="Isère">
+            <option value="Jura">
+            <option value="Landes">
+            <option value="Loir-et-Cher">
+            <option value="Loire">
+            <option value="Haute-Loire">
+            <option value="Loire-Atlantique">
+            <option value="Loiret">
+            <option value="Lot">
+            <option value="Lot-et-Garonne">
+            <option value="Lozère">
+            <option value="Maine-et-Loire">
+            <option value="Manche">
+            <option value="Marne">
+            <option value="Haute-Marne">
+            <option value="Mayenne">
+            <option value="Meurthe-et-Moselle">
+            <option value="Meuse">
+            <option value="Morbihan">
+            <option value="Moselle">
+            <option value="Nièvre">
+            <option value="Nord">
+            <option value="Oise">
+            <option value="Orne">
+            <option value="Pas-de-Calais">
+            <option value="Puy-de-Dôme">
+            <option value="Pyrénées-Atlantiques">
+            <option value="Hautes-Pyrénées">
+            <option value="Pyrénées-Orientales">
+            <option value="Bas-Rhin">
+            <option value="Haut-Rhin">
+            <option value="Rhône">
+            <option value="Haute-Saône">
+            <option value="Saône-et-Loire">
+            <option value="Sarthe">
+            <option value="Savoie">
+            <option value="Haute-Savoie">
+            <option value="Paris">
+            <option value="Seine-Maritime">
+            <option value="Seine-et-Marne">
+            <option value="Yvelines">
+            <option value="Deux-Sèvres">
+            <option value="Somme">
+            <option value="Tarn">
+            <option value="Tarn-et-Garonne">
+            <option value="Var">
+            <option value="Vaucluse">
+            <option value="Vendée">
+            <option value="Vienne">
+            <option value="Haute-Vienne">
+            <option value="Vosges">
+            <option value="Yonne">
+            <option value="Territoire-de-Belfort">
+            <option value="Essonne">
+            <option value="Hauts-de-Seine">
+            <option value="Seine-Saint-Denis">
+            <option value="Val-de-Marne">
+            <option value="Val-d'Oise">
+        </datalist>
+    
+        <div id="result_dep"></div>
+        <br>
+        <hr>
+        <br>
+        <h3>Find by region name</h3>
+        
+
+        <label for="region">Enter the region:</label>
+        <input type="search" id="region" list = "regions_list" name="q">
+        <button  type="button" value="Submit" onclick='return getStationsInRegion(document.getElementById("region").value)'>Search</button>
+
+        <datalist id="regions_list">
+            <option value="Auvergne-Rhône-Alpes">
+            <option value="Bourgogne-Franche-Comté">
+            <option value="Bretagne">
+            <option value="Centre-Val de Loire">
+            <option value="Corse">
+            <option value="Grand Est">
+            <option value="Hauts-de-France">
+            <option value="Île-de-France">
+            <option value="Normandie">
+            <option value="Nouvelle-Aquitaine">
+            <option value="Occitanie">
+            <option value="Pays de la Loire">
+            <option value="Provence-Alpes-Côte d'Azur">
+        </datalist>
+        
+        <div id="result_reg"></div>
+        <br>
+
+        <hr>
        
     </body>
 </html>
